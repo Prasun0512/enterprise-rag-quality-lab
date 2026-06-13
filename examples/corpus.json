@@ -1,0 +1,22 @@
+[
+  {
+    "id": "doc-intake",
+    "title": "Document Intake and Redaction",
+    "text": "Enterprise document pipelines should mask PII before indexing or sending content to a model. Email addresses and phone numbers should be redacted in logs and evaluation artifacts."
+  },
+  {
+    "id": "doc-rag-quality",
+    "title": "RAG Retrieval Quality",
+    "text": "RAG systems need repeatable evaluation using recall at k, precision at k, reciprocal rank, citation support, latency, and human quality review."
+  },
+  {
+    "id": "doc-human-review",
+    "title": "Human Review Routing",
+    "text": "Low-confidence extraction or weak retrieval should route to human review. Review queues help maintain accuracy, auditability, and responsible AI governance."
+  },
+  {
+    "id": "doc-agent-tools",
+    "title": "Agent Tool Governance",
+    "text": "Agentic workflows should restrict tool access, log every tool invocation, validate payloads before external writes, and require approval for sensitive operations."
+  }
+]

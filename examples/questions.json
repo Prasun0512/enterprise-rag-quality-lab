@@ -1,0 +1,18 @@
+[
+  {
+    "question": "How should PII be handled before model calls?",
+    "expected_ids": ["doc-intake"]
+  },
+  {
+    "question": "Which metrics help evaluate retrieval quality?",
+    "expected_ids": ["doc-rag-quality"]
+  },
+  {
+    "question": "When should a workflow route output to human review?",
+    "expected_ids": ["doc-human-review"]
+  },
+  {
+    "question": "How should agent tools be controlled in production?",
+    "expected_ids": ["doc-agent-tools"]
+  }
+]

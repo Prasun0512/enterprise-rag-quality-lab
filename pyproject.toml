@@ -1,0 +1,12 @@
+[project]
+name = "enterprise-rag-quality-lab"
+version = "0.1.0"
+description = "Dependency-light RAG quality, retrieval evaluation, and governance demo."
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0.0"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
