@@ -22,6 +22,7 @@ so it can run locally and safely.
 ```bash
 python scripts/run_demo.py
 python -m pytest
+docker compose up --build
 ```
 
 ## Example Output
@@ -55,3 +56,11 @@ tests/
 - Add LLM answer generation with citation validation
 - Add prompt registry and evaluation dashboards
 - Add PHI/PII policies before ingestion and generation
+
+## Engineering Maturity
+
+- Dockerfile and `docker-compose.yml` with a local PostgreSQL service placeholder
+- GitHub Actions workflow for tests
+- `.env.example` for Azure AI Search, PostgreSQL, and vector backend configuration
+- Production readiness notes in `docs/production-readiness.md`
+- Security, monitoring, cost, scalability, and feedback-loop considerations documented
