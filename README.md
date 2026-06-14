@@ -78,6 +78,9 @@ tests/
 
 - Dockerfile and `docker-compose.yml` with a local PostgreSQL service placeholder
 - GitHub Actions workflow for tests
+- Architecture overview in `docs/architecture.md`
+- Production readiness notes in `docs/production-readiness.md`
+- Security and governance guidance in `docs/security-and-governance.md`
 - `.env.example` for Azure AI Search, PostgreSQL, and vector backend configuration
 - Production readiness notes in `docs/production-readiness.md`
 - Security, monitoring, cost, scalability, and feedback-loop considerations documented
