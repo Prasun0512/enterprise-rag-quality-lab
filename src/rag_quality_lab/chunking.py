@@ -34,3 +34,55 @@ def chunk_text(text: str, chunk_size: int = 90, overlap: int = 15) -> list[str]:
             break
         start = end - overlap
     return chunks
+
+
+def chunk_with_metadata(
+    text: str,
+    metadata: dict[str, str],
+    chunk_size: int = 90,
+    overlap: int = 15,
+) -> list[dict[str, object]]:
+    """Create chunks that carry document metadata for filtered retrieval."""
+    chunks = chunk_text(text, chunk_size=chunk_size, overlap=overlap)
+    return [
+        {
+            "chunk_id": f"{metadata.get('doc_id', 'doc')}-{index}",
+            "text": chunk,
+            "metadata": dict(metadata),
+        }
+        for index, chunk in enumerate(chunks, start=1)
+    ]
+
+
+def semantic_style_chunks(text: str, max_tokens: int = 90) -> list[str]:
+    """Group paragraphs into chunks without splitting short sections.
+
+    This is dependency-light and deterministic. It is not a true embedding-based
+    semantic splitter, but it mirrors the production design goal: preserve
+    coherent sections before applying a token budget.
+    """
+    if max_tokens <= 0:
+        raise ValueError("max_tokens must be positive")
+
+    paragraphs = [normalize_text(part) for part in re.split(r"\n\s*\n", text) if part.strip()]
+    if not paragraphs:
+        return []
+
+    chunks: list[str] = []
+    current: list[str] = []
+    current_tokens = 0
+
+    for paragraph in paragraphs:
+        token_count = len(tokenize(paragraph))
+        if current and current_tokens + token_count > max_tokens:
+            chunks.append(" ".join(current))
+            current = [paragraph]
+            current_tokens = token_count
+        else:
+            current.append(paragraph)
+            current_tokens += token_count
+
+    if current:
+        chunks.append(" ".join(current))
+
+    return chunks

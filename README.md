@@ -11,9 +11,9 @@ so it can run locally and safely.
 ## What It Demonstrates
 
 - Text normalization and PII masking before indexing
-- Deterministic chunking for retrieval pipelines
+- Fixed-size, metadata-aware, and semantic-style chunking helpers
 - Simple lexical retrieval baseline for explainable evaluation
-- Recall@k, precision@k, and reciprocal-rank metrics
+- Recall@k, precision@k, reciprocal-rank, grounding, and citation-coverage metrics
 - Confidence-based review routing for low-quality retrieval
 - Reproducible demo data and tests
 
@@ -79,7 +79,9 @@ tests/
 - Dockerfile and `docker-compose.yml` with a local PostgreSQL service placeholder
 - GitHub Actions workflow for tests
 - Architecture overview in `docs/architecture.md`
+- Evaluation strategy in `docs/evaluation.md`
 - Production readiness notes in `docs/production-readiness.md`
+- Security and privacy guidance in `docs/security-and-privacy.md`
 - Security and governance guidance in `docs/security-and-governance.md`
 - `.env.example` for Azure AI Search, PostgreSQL, and vector backend configuration
 - Production readiness notes in `docs/production-readiness.md`
