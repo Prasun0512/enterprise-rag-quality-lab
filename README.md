@@ -17,6 +17,23 @@ so it can run locally and safely.
 - Confidence-based review routing for low-quality retrieval
 - Reproducible demo data and tests
 
+## Architecture Decisions and Tradeoffs
+
+- **Decision:** Keep a deterministic local retrieval baseline before adding
+  managed vector databases or LLM calls.
+- **Tradeoff:** Lexical retrieval is less powerful than embeddings, but it is
+  explainable, reproducible, and useful as a regression baseline.
+- **Expected scale:** Designed as a quality-lab pattern for evaluating retrieval
+  changes before applying them to larger enterprise document collections.
+- **Cost strategy:** Measure retrieval quality before adding rerankers or premium
+  generation models; cache embeddings when production backends are added.
+- **Security strategy:** Mask PII before indexing where required and enforce
+  tenant/role metadata filters in production extensions.
+- **Operational strategy:** Track recall@k, precision@k, reciprocal rank,
+  citation support, no-answer rate, and review routing.
+- **Lessons learned:** RAG quality is an evaluation discipline, not only a vector
+  database implementation.
+
 ## Quick Start
 
 ```bash
