@@ -1,0 +1,17 @@
+services:
+  rag-quality-lab:
+    build: .
+    environment:
+      APP_ENV: local
+      LOG_LEVEL: INFO
+      RETRIEVAL_TOP_K: "3"
+    command: python scripts/run_demo.py
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: rag_quality
+      POSTGRES_USER: rag
+      POSTGRES_PASSWORD: rag_local_password
+    ports:
+      - "5432:5432"
